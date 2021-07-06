@@ -1,0 +1,9 @@
+{
+  "name": "photo_sharing",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
+  }
+}
