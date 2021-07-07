@@ -12,6 +12,7 @@ class PostsController < ApplicationController
       render:new
     else
       if @post.save
+        PostMailer.post_mail(@post).deliver
         redirect_to posts_path, notice: "Post was successfully updated."
       else
         render :new
