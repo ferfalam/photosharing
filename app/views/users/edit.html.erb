@@ -1,6 +1,21 @@
-<h1>Editing User</h1>
+<div class="container">
+    <h1>Profile</h1>
+    <div class="row d-flex">
+        <div class="col col-md-6 w-100 text-center">
+            <%= image_tag default_or_image(@user), class:"rounded-circle w-75 h-75" %>
+            <%= form_with(scope: :user, local: true, url: profil_picture_users_path) do |f| %>
+                <div class="form-group">
+                    <%= f.file_field :image %>
+                    <%= f.hidden_field :image_cache %>
+                    <%= f.submit "Modifier"%>
+                </div>
+            <% end %>
+        </div>
+        <div class="col col-md-6 w-100">
+            <%= render 'form', user: @user %>
+        </div>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    </div>
+    <%= link_to 'Show', @user %> |
+    <%= link_to 'Back', users_path %>
+</div>
