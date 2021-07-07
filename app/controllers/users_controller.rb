@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  #skip_before_action :login_
+  skip_before_action :login_required, only: [:new, :create]
 
   def new
     @user = User.new()
@@ -23,14 +23,6 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       render :new
-    end
-  end
-
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
