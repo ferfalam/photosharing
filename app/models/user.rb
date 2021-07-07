@@ -7,4 +7,6 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6 }
     validates :birthday, :gender, presence: true
     has_many :posts    
+    has_many :favorites, dependent: :destroy
+    has_many :favorite_posts, through: :favorites, source: :post
 end

@@ -2,6 +2,13 @@
     <div class="card" style="width: 100%;">
         <%= image_tag @post.image.url, class:"card-img-top" %>
         <div class="card-body">
+            <% unless @post.user_id == current_user.id %>
+                <% if current_user.favorites.find_by(post_id: @post.id).present? %>
+                    <%= link_to "", favorite_path(@post.id), method: :delete, class:"fa fa-heart favorite"%>   
+                <% else %>
+                    <%= link_to "", favorites_path(@post.id), method: :post, class:"fa fa-heart-o favorite"%>   
+                <% end %>
+            <% end %>
             <p class="card-text"><%=@post.content%></p>
             
             <% if @post.user_id == current_user.id %>
