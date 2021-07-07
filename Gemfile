@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'mimemagic', '0.3.7'
 gem 'popper_js', '~> 2.9.2'
+gem 'faker'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
