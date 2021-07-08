@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update  ]
   skip_before_action :login_required, only: [:new, :create]
 
   def new
@@ -20,18 +20,22 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to edit_user_path(@user)
+      redirect_to user_path(@user)
     else
       render :new
     end
   end
 
   def profilModify
-    @user = User.find(1)
+    @user = User.find(current_user.id)
     @user.image = params[:user][:image]
     @user.save(validate: false)
-    render :edit
+    render :show
   end
+
+  def show
+  end
+  
   
 
   private
